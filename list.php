@@ -1,25 +1,22 @@
 <?php
-require '../config.php';
+require 'config.php';
 requireLogin();
+include 'includes/header.php';
+?>
 
-header('Content-Type: application/json; charset=utf-8');
+<div class="card p-4 animation fadeIn">
+    <h1 class="mb-4"><i class="fas fa-list"></i> DANH SÁCH CÁC TIÊU CHUẨN KIỂM TRA ĐÃ THIẾT LẬP</h1>
+    <table id="standards-table" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>MÃ SẢN PHẨM</th>
+                <th>MÃ KHÁCH HÀNG</th>
+                <th>NGÀY TẠO</th>
+                <th>MANAGER</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
 
-try {
-    // Lấy danh sách standards theo user
-    $stmt = $pdo->prepare("SELECT id, ma_san_pham, ma_khach_hang, created_at 
-                           FROM standards 
-                           WHERE user_id = ? 
-                           ORDER BY created_at DESC");
-    $stmt->execute([$_SESSION['user_id']]);
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Format lại cho DataTables
-    echo json_encode([
-        "data" => $rows
-    ]);
-} catch (Exception $e) {
-    echo json_encode([
-        "data" => [],
-        "error" => $e->getMessage()
-    ]);
-}
+<?php include 'includes/footer.php'; ?>
