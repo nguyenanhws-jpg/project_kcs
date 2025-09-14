@@ -1,0 +1,60 @@
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif; /* Như tham khảo */
+    color: #333;
+    background: linear-gradient(135deg, #f0f2f5 0%, #e0e4e8 100%);
+}
+.bg-primary { background-color: #007bff !important; }
+.table th { background-color: #007bff; color: white; text-align: center; }
+.table td { vertical-align: middle; }
+.btn-add { background: linear-gradient(45deg, #28a745 0%, #218838 100%); color: white; }
+.btn-edit { background: linear-gradient(45deg, #ffc107 0%, #e0a800 100%); color: black; }
+.btn-delete { background: linear-gradient(45deg, #dc3545 0%, #c82333 100%); color: white; }
+.btn-generate { background: linear-gradient(45deg, #007bff 0%, #0069d9 100%); color: white; }
+.img-preview { max-width: 300px; height: auto; border: 1px solid #ccc; margin: 10px auto; border-radius: 5px; display: block; transition: transform 0.3s ease; }
+.img-preview-sm { max-width: 100px; height: auto; border: 1px solid #ccc; margin: 5px; border-radius: 5px; display: inline-block; }
+.img-preview:hover { transform: scale(1.05); }
+.dropzone { border: 2px dashed #007bff; background: #f8f9fa; min-height: 200px; text-align: center; padding: 20px; cursor: pointer; }
+.dropzone .dz-message { color: #007bff; font-weight: bold; margin: 2em 0; }
+.dropzone:hover { border-color: #0056b3; }
+.card { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); animation: fadeIn 0.3s; }
+@keyframes fadeIn { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+.notes-ng { color: red; font-style: italic; }
+.popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+.popup-content { background: white; padding: 25px; border-radius: 15px; max-width: 90%; max-height: 90%; overflow: auto; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); animation: fadeIn 0.3s; }
+.close-btn { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; color: #dc3545; transition: color 0.3s, transform 0.2s; }
+.close-btn:hover { color: #c82333; transform: rotate(90deg); }
+.form-control:focus { border-color: #007bff; box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25); }
+
+/* Thêm styles từ tham khảo */
+.standard-header { text-align: center; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0; }
+.standard-header h1 { color: #2c3e50; font-size: 28px; font-weight: 700; text-transform: uppercase; }
+.standard-footer { margin-top: 25px; font-size: 12px; color: #666; text-align: center; border-top: 1px dashed #ccc; padding-top: 10px; font-style: italic; }
+.preview-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; background: #fff; }
+.preview-table th, .preview-table td { border: 1px solid #dee2e6; padding: 12px; text-align: left; color: #2c3e50; }
+.preview-table th { background: #2c3e50; color: #fff; font-weight: 600; text-transform: uppercase; }
+.preview-table td { background: #f8f9fa; }
+.signature-right { border: 1px solid #000; width: 100px; height: 50px; }
+
+/* Print styles: A3 ngang, fix nhảy loạn, hình rõ */
+@media print {
+    @page { size: A3 landscape; margin: 0.5cm; } /* A3 ngang, margin nhỏ */
+    body { background: white; font-size: 10pt; margin: 0; padding: 0; }
+    .print-container { width: 100%; margin: 0 auto; text-align: left; box-sizing: border-box; }
+    .print-header { text-align: center; border-bottom: 1px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
+    .print-header h1 { font-size: 14pt; margin: 5px 0; }
+    .doc-info p { font-size: 8pt; margin: 2px 0; }
+    .section-product, .section-ngoai-quan, .section-kich-thuoc, .section-references { page-break-after: avoid; margin-bottom: 20px; }
+    h2 { font-size: 12pt; page-break-after: avoid; }
+    .table th, .table td { border: 1px solid #dee2e6 !important; padding: 12px !important; text-align: left; font-size: 9pt; word-wrap: break-word; vertical-align: top; } /* Align top, fix nhảy loạn */
+    .print-table { width: 100%; table-layout: fixed; page-break-inside: avoid; margin: 0 auto; border-collapse: collapse; }
+    .image-container { display: block; text-align: center; } /* Block để align vertical */
+    .img-print { max-width: 100px; height: auto; display: inline-block; margin: 5px; object-fit: contain; border: 1px solid #ccc; } /* Nhỏ gọn, rõ ràng */
+    .img-drawing { max-width: 80%; height: auto; display: block; margin: 5px auto; object-fit: contain; border: 1px solid #ccc; }
+    .caption { font-size: 8pt; text-align: center; margin-top: 2px; font-style: italic; }
+    .print-footer { position: fixed; bottom: 0; width: 100%; border-top: 1px solid #000; padding-top: 5px; font-size: 8pt; text-align: center; }
+    .print-footer p { margin: 2px 0; }
+    .no-print { display: none !important; }
+    .signature-right { border: 1px solid #000 !important; }
+    img { page-break-inside: avoid; }
+}
